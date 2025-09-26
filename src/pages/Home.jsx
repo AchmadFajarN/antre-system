@@ -12,7 +12,7 @@ const Home = () => {
           <h1 className="text-2xl xl:text-4xl text-center font-semibold">
             Layanan Tanpa Ribet, Antrian Jadi Rapi
           </h1>
-          <p className="text-center mb-4 font-[500]">"Dengan RizkyQueue, anda tidak perlu menunggu lama.<br/> Semua antrean bisa dipantau real-time.”</p>
+          <p className="text-center mb-4 font-[500]">Ajukan Sistem Pengajuan Akademi mudah dan praktis</p>
           <Button
             path={"/auth/register"}
             content={"Coba Sekarang"}

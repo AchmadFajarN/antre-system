@@ -1,9 +1,9 @@
 import { Outlet } from "react-router"
 const Dashboard = () => {
   return (
-    <div>
+    <main>
         <Outlet />
-    </div>
+    </main>
   )
 }
 

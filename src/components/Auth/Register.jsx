@@ -15,7 +15,7 @@ const Register = () => {
           <div className="flex flex-col mb-4 gap-2 font-semibold">
             <input type="password" className="input" placeholder="Password" />
           </div>
-          <button className="button-yellow w-full cursor-pointer rounded-md">Register</button>
+          <button className="button-yellow-home w-full cursor-pointer rounded-md">Register</button>
           <div className="flex gap-1 mt-4 text-sm font-semibold justify-center items-center">
             <p className="">Sudah punya akun?</p>
             <Link className="text-yellow-600" to={'/auth'}>Login disini</Link>

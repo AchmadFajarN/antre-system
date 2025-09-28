@@ -30,9 +30,9 @@ const kategoriPermintaan = [
     color: "button-red",
   },
   {
-    content: 'Pengajuan Seminar Kp',
-    path: '/dashboard/request/seminarkp',
-    color: 'button-teal'
+    content: "Pengajuan Seminar Kp",
+    path: "/dashboard/request/seminarkp",
+    color: "button-teal",
   },
   {
     content: "Pengajuan Sidang Skripsi",
@@ -79,15 +79,89 @@ const kategoriPengajuan = [
 
 const kategoriPenugasan = [
   {
-    content: 'Penugasan Dosen Pembimbing Kerja Praktik',
-    path: '/dashboard/request/suratpenugasan/dosenkerjapraktik',
-    color: 'button-green'
+    content: "Penugasan Dosen Pembimbing Kerja Praktik",
+    path: "/dashboard/request/suratpenugasan/dosenkerjapraktik",
+    color: "button-green",
   },
   {
-    content: 'Penugasan Dosen Pembimbing Tugas Akhir/skripsi',
-    path: '/dashboard/request/suratpenugasan/dosentugasakhir',
-    color: 'button-blue'
-  }
-]
+    content: "Penugasan Dosen Pembimbing Tugas Akhir/skripsi",
+    path: "/dashboard/request/suratpenugasan/dosentugasakhir",
+    color: "button-blue",
+  },
+];
 
-export { kategoriPermintaan, kategoriKeterangan, kategoriPengajuan, kategoriPenugasan };
+const objectDataDummy = () => {
+  return {
+    keterangan: [
+      {
+        id: "keterangan-1",
+        jenis: "keterangan mahasiswa aktif",
+        status: "menunggu",
+        tanggal: "2025-01-04",
+      },
+      {
+        id: "keterangan-2",
+        jenis: "Keterangan lulus",
+        status: "success",
+        tanggal: "2025-03-01",
+      },
+    ],
+    pengajuan: [
+      {
+        id: "pengajuan-1",
+        jenis: "Judul Kerja Praktik",
+        status: "success",
+        tanggal: "2025-08-04",
+      },
+    ],
+    penugasan: [
+      {
+        id: "penugasan-2",
+        jenis: "Penugasan Dosen Pembimbing Kerja Praktik",
+        status: "reject",
+        tanggal: "2025-08-02",
+      },
+      {
+        id: 'penugasan-3',
+        jenis: 'Penugasan Dosen Pembimbing Kerja Praktik',
+        status: 'success',
+        tanggal: '2025-08-02'
+      }
+    ],
+    transkripNilai: [
+      {
+        id: 'transkrip-1',
+        status: 'reject',
+        tanggal: '2025-10-02'
+      }
+    ]
+  };
+};
+
+const data = objectDataDummy();
+const allData = Object.values(data).flat();
+
+// const statusCount =  allData.reduce((acc, item) => {
+//     acc[item.jenis] = (acc[item.jenis] || 0) + 1;
+//     return acc;
+//   }, {});
+
+// console.log(statusCount)
+
+const monthCount = allData.reduce((acc, item) => {
+    const month = new Date(item.tanggal).toLocaleString("default", {
+      month: "short",
+    });
+    acc[month] = (acc[month] || 0) + 1;
+    return acc;
+  }, {});
+console.log(monthCount)
+
+
+export {
+  kategoriPermintaan,
+  kategoriKeterangan,
+  kategoriPengajuan,
+  kategoriPenugasan,
+  objectDataDummy
+};

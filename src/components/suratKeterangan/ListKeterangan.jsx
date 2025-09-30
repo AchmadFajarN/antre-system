@@ -4,9 +4,7 @@ import { kategoriKeterangan } from "../../utils/constant";
 const ListKeterangan = () => {
   return (
     <>
-    <div className="">
-      <ListLink data={kategoriKeterangan} title={"Pilih Jenis Keterangan"} />
-    </div>
+    <ListLink data={kategoriKeterangan} title={'Silahkan pilih jenis keterangan'} />
     </>
   );
 };

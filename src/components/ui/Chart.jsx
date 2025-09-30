@@ -83,7 +83,7 @@ const PengajuanCharts = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="flex-center flex-col xl:max-h-[300px] border-4 rounded-xl p-4 border-slate-500 shadow-xl">
+        <div className="flex-center bg-white flex-col xl:max-h-[300px] rounded-xl p-4 shadow-xl">
           <h2 className="font-semibold text-slate-800">
             {allData.length >= 1
               ? "Distribusi Status Pengajuan"
@@ -92,7 +92,7 @@ const PengajuanCharts = () => {
           {allData.length >= 1 && <Pie data={statusData} />}
         </div>
 
-        <div className="flex-center flex-col xl:max-h-[300px] rounded-xl border-4 border-slate-500 shadow-xl">
+        <div className="flex-center bg-white flex-col xl:max-h-[300px] rounded-xl shadow-xl">
           <h2 className="font-semibold text-slate-800">
             {allData.length >= 1
               ? "Tren Pengajuan perbulan"
@@ -120,7 +120,7 @@ const PengajuanCharts = () => {
           </div>
         </div>
         <div className="rounded-lg overflow-hidden shadow-xl">
-          <table className="w-full">
+          <table className="w-full bg-white">
             <thead>
               <tr className="bg-slate-900">
                 <th className="table-head">Jenis Request</th>
@@ -135,7 +135,7 @@ const PengajuanCharts = () => {
                   <td className="table-data hidden md:table-cell">{item.jenis}</td>
                   <td className="table-data">{ item.kategori }</td>
                   <td className="table-data hidden md:table-cell">{item.tanggal}</td>
-                  <td className="px-4 border-b">
+                  <td className="px-4 border-b flex justify-center">
                     {item.status === "success" ? (
                       <Dot className="text-green-700" size={50} />
                     ) : item.status === "menunggu" ? (

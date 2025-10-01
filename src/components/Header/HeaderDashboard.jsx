@@ -5,7 +5,7 @@ import BackLink from "../ui/BackLink"
 
 const HeaderDashboard = ({ active, setActive }) => {
   return (
-    <header className="w-full lg:pl-90 bg-white fixed z-40 top-0 shadow-xl items-center gap-4 py-4 px-6 flex justify-end">
+    <header className="w-full lg:pl-90 xl:pl-100 2xl:pl-140 bg-white fixed z-40 top-0 shadow-xl items-center gap-4 py-4 px-6 flex justify-end">
         <div className="flex-5">
           <BackLink />
         </div>

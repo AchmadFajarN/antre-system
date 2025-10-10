@@ -11,6 +11,11 @@ import Dashboard from "../pages/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
 import DashboardRequest from "../components/Dashboard/DashboardRequest";
 import DashboardUser from "../components/Dashboard/DashboardUser";
+import DashboardAdmin from "../components/Dashboard/DashboardAdmin";
+
+// admin
+import LayoutAdmin from "../components/admin/LayoutAdmin";
+
 
 // Request
 import Request from "../components/Request/Request";
@@ -27,6 +32,7 @@ import SeminarKp from "../components/Request/SeminarKp";
 import ListKeterangan from "../components/suratKeterangan/ListKeterangan";
 import KeteranganLulus from "../components/suratKeterangan/KeteranganLulus";
 import MahasiswaAktif from "../components/suratKeterangan/MahasiswaAktif";
+import KeteranganCuti from "../components/suratKeterangan/KeteranganCuti";
 import PengunduranDiri from "../components/suratKeterangan/PengunduranDiri";
 
 // Surat Pengajuan
@@ -81,6 +87,10 @@ const Router = createBrowserRouter([
                 Component: ListKeterangan
               },
               {
+                path: 'cuti',
+                Component: KeteranganCuti
+              },
+              {
                 path: 'mahasiswaaktif',
                 Component: MahasiswaAktif
               },
@@ -111,7 +121,7 @@ const Router = createBrowserRouter([
                 Component: JudulSkripsi
               },
               {
-                path: 'pengantarkerjapraktik',
+                path: 'pengantar-kerja-praktik',
                 Component: PengantarKerjaPraktik
               }
             ]
@@ -158,6 +168,10 @@ const Router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '/admin',
+    Component: LayoutAdmin
+  }
 ]);
 
 export default Router;

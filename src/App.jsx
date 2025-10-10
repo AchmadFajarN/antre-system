@@ -4,7 +4,7 @@ import { Outlet } from 'react-router'
 const App = () => {
   return (
     <>
-      <main className='mb-30'>
+      <main className=''>
         <Outlet />
       </main>
     </>

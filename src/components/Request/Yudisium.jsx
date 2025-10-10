@@ -1,8 +1,10 @@
-import React from 'react'
+import Pengajuan from "../ui/Pengajuan"
+import { yudisium } from "../../utils/constant"
 
 const Yudisium = () => {
+  const { title, syarat, url, fileName } = yudisium
   return (
-    <div>Yudisium</div>
+    <Pengajuan title={title} syarat={syarat} url={url} fileName={fileName} />
   )
 }
 

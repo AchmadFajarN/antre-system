@@ -21,7 +21,7 @@
 
 @layer components {
     .button-yellow-home {
-        @apply bg-yellow-500 flex justify-center items-center rounded-md border-4 border-transparent hover:border-slate-800 transition-colors duration-300 ease-in-out hover:bg-transparent text-slate-800 font-semibold py-2 px-4;
+        @apply bg-yellow-500 flex justify-center items-center rounded-md border-4 border-transparent hover:border-slate-800 transition-colors duration-300 ease-in-out hover:bg-transparent text-slate-800 font-semibold py-1 px-4;
     }
 }
 
@@ -81,6 +81,12 @@
 }
 
 @layer components {
+    .input-pengajuan {
+        @apply w-full border-1 border-slate-500 rounded-md text-slate-900 text-sm font-[500] outline-0 focus:outline-1 px-4 py-1;
+    }
+}
+
+@layer components {
     .list-sidebar {
         @apply  py-2 font-semibold px-4 xl:px-8 cursor-pointer w-full;
     }
@@ -95,5 +101,17 @@
 @layer components {
     .table-data {
         @apply px-4 py-2 border-b text-nowrap text-center text-slate-800 text-sm font-[600];
+    }
+}
+
+@layer components {
+    .container-pengajuan {
+        @apply xl:pl-[28%] min-h-screen w-full xl:pr-8 pt-20 pb-6 grid gap-4 grid-cols-1 md:grid-cols-2;
+    }
+}
+
+@layer components {
+    .card-pengajuan {
+        @apply bg-slate-50 shadow-xl rounded-xl px-6 py-4;
     }
 }

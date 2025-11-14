@@ -1,9 +1,33 @@
-import React from 'react'
+import { sempro } from "../../utils/constant";
+import Pengajuan from "../ui/Pengajuan";
+import LinkTranskrip from "../ui/LinkTranskrip";
 
-const SuratSempro = () => {
+const ChildrenSempro = () => {
   return (
-    <div>SuratSempro</div>
-  )
-}
+    <>
+      <LinkTranskrip
+        path={"/dashboard/request/transkripnilai"}
+        content={" Link pengajuan transkrip nilai"}
+      />
+      <LinkTranskrip
+        path={"dashboard/request/suratpenugasan/dosentugasakhir"}
+        content={"Link pengajuan surat penugasan dosen"}
+      />
+    </>
+  );
+};
+const SuratSempro = () => {
+  const { syarat, title, url, fileName } = sempro;
+  return (
+    <Pengajuan
+      syarat={syarat}
+      url={url}
+      fileName={fileName}
+      title={title}
+      isDisplay={false}
+      children={<ChildrenSempro />}
+    />
+  );
+};
 
-export default SuratSempro
+export default SuratSempro;

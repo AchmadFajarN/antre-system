@@ -10,7 +10,7 @@ const KerjaPraktik = () => {
       syarat={syarat}
       title={title}
       fileName={fileName}
-      children={<LinkTranskrip />}
+      children={<LinkTranskrip path={"/dashboard/request/transkripnilai"} content={' Link pengajuan transkrip nilai'} />}
     />
   );
 };

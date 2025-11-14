@@ -111,6 +111,12 @@
 }
 
 @layer components {
+    .card-dashboard {
+        @apply flex flex-col bg-white shadow-md p-2 rounded-md text-gray-900 gap-4;
+    }
+}
+
+@layer components {
     .card-pengajuan {
         @apply bg-slate-50 shadow-xl rounded-xl px-6 py-4;
     }

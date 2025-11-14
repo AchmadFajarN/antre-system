@@ -3,8 +3,10 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { login } from '../../utils/api/auth';
 import { useNavigate } from "react-router";
+import { useUser } from "../../utils/hooks/userContext";
 
 const Login = () => {
+  const { updateUserData } = useUser();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,10 +17,15 @@ const Login = () => {
     e.preventDefault();
     const responseLogin = await login({ email, password });
     if (responseLogin.message === 'Login success') {
+
       localStorage.setItem('tokenKey', responseLogin.access_token)
+      updateUserData(responseLogin.user);
       localStorage.setItem('user', JSON.stringify(responseLogin.user));
       navigate('/dashboard');
       console.log(responseLogin);
+      if(responseLogin.user.role === "admin") {
+        navigate("/admin")
+      }
     }
 
     if (responseLogin.status === 'error') {

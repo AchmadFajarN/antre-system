@@ -1,7 +1,18 @@
 import { useState } from "react";
 import Syarat from "./Syarat";
 
-const Pengajuan = ({ url, syarat, title, fileName, children, isDisplay }) => {
+const Pengajuan = ({
+  url,
+  syarat,
+  title,
+  fileName,
+  children,
+  isDisplay,
+  submitHandler,
+  message,
+  setMessage,
+  placeholder,
+}) => {
   const [showPreview, setShowPreview] = useState(false);
 
   const handlerDownload = () => {
@@ -31,18 +42,19 @@ const Pengajuan = ({ url, syarat, title, fileName, children, isDisplay }) => {
         <h2 className="text-xl text-slate-800 font-semibold mb-8">
           Informasi Pengaju
         </h2>
-        <form className="flex flex-col gap-4" action="">
+        <form
+          onSubmit={submitHandler}
+          className="flex flex-col gap-4"
+          action=""
+        >
           <input
-            className="input-pengajuan"
-            type="text"
-            placeholder="Title"
-          />
-          <input
             type="text"
             className="input-pengajuan"
-            placeholder="deskirpsi"
+            placeholder={placeholder ? placeholder : "message"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           />
-          {!isDisplay && <input type="file" className="input-pengajuan" />}      
+          {!isDisplay && <input type="file" className="input-pengajuan" />}
           <button className="text-sm bg-yellow-500 text-slate-900 border-transparent hover:bg-transparent hover:border-slate-900 transition-colors duration-animation border-2 font-[500] px-4 cursor-pointer py-1 rounded-md">
             Submit
           </button>

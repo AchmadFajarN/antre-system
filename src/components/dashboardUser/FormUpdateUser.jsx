@@ -1,0 +1,83 @@
+import UploadWidget from "../ui/UploadWidget";
+import { useState } from "react";
+import { updateProfile } from "../../utils/api/user";
+import { AdvancedImage } from "@cloudinary/react";
+import Cld from "../../utils/cloudinary.config";
+import { useUser } from "../../utils/hooks/userContext"
+import { useNavigate } from "react-router";
+
+const FormUpdateUser = () => {
+  const navigate = useNavigate();
+  const { updateUserData } = useUser();
+  const { email, phone, username } = JSON.parse(
+    localStorage.getItem("user")
+  );
+
+  const { url_photo: initialUrl } = JSON.parse(localStorage.getItem("user"));
+  const [usernameInput, setUsername] = useState(username);
+  const [emailInput, setEmail] = useState(email);
+  const [phoneInput, setPhone] = useState(phone);
+  const [urlPhoto, setUrlPhoto] = useState(initialUrl);
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("tokenKey");
+    const response = await updateProfile(token, {
+      email: emailInput,
+      username: usernameInput,
+      phone: phoneInput,
+      url_photo: urlPhoto,
+    });
+
+    console.log(response);
+
+    if (response.status === "success") {
+      updateUserData(response.data);
+      navigate("/dashboard/user")
+    }
+
+  };
+
+  return (
+    <div className="w-md bg-white/50   px-4 py-8 rounded-md shadow-md">
+      <div className="size-30 mx-auto shadow-md p-2 rounded-md overflow-hidden">
+        <AdvancedImage
+          className="w-full h-full object-top object-cover"
+          cldImg={Cld.image(urlPhoto)}
+        />
+      </div>
+      <UploadWidget setPublicId={setUrlPhoto} />
+      <form onSubmit={onSubmitHandler}>
+        <input
+          className="input-pengajuan"
+          type="text"
+          name="username"
+          value={usernameInput}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+        <input
+          className="input-pengajuan mt-2"
+          type="string"
+          name="phone"
+          value={phoneInput}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Phone"
+        />
+        <input
+          className="input-pengajuan mt-2"
+          type="text"
+          name="email"
+          value={emailInput}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="email"
+        />
+        <button className="button-yellow-home mt-4 w-full" type="submit">
+          Update
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default FormUpdateUser;

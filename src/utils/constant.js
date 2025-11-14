@@ -215,6 +215,61 @@ const yudisium = {
   url: '/yudisium/yudisium.pdf',
   fileName: 'yudisium.pdf'
 }
+
+const sempro = {
+  syarat: [
+    'Silahkan unduh berkas persayaratan untuk pengajuan',
+    'Isi data-data yang dibutuhkan dalam surat tersebut',
+    'Ajukan transkrip nilai jika tidak ada',
+    'Screenshoot rekap pembayaran seminar skripsi melalui SIAKAD',
+    'Masukan penugasan dosen skripsi/tugas akhir',
+    'Masukan sisa persayaratan administrasi daftar seminar tugas akhir',
+    'Upload semua berkas dalam satu file pdf',
+    'Buku sidang skripsi 3 jilid (Bab 1 - 3)',
+    'Pengajuan anda akan ditinjau oleh admin',
+    'Berkas akan dikirim melalui aplikasi ini, karena itu silahkan cek secara berkala'
+  ],
+  title: 'Sempro',
+  url: '/sempro/sempro.pdf',
+  fileName: 'sempro.pdf'
+}
+
+const seminarKerjaPraktik = {
+  syarat: [
+    'Silahkan unduh berkas persayaratan untuk pengajuan',
+    'Isi data-data yang dibutuhkan dalam surat tersebut',
+    'Ajukan transkrip nilai jika tidak ada',
+    'Screenshoot rekap pembayaran seminar KP melalui SIAKAD',
+    'Masukan penugasan dosen skripsi/tugas akhir',
+    'Masukan sisa persayaratan administrasi daftar seminar tugas akhir',
+    'Upload semua berkas dalam satu file pdf',
+    'Buku laporan KP 2 jilid',
+    'Pengajuan anda akan ditinjau oleh admin',
+    'Berkas akan dikirim melalui aplikasi ini, karena itu silahkan cek secara berkala'
+  ],
+  title: 'Seminar Kerja Praktik',
+  url: '/sempro/sempro.pdf',
+  fileName: 'Seminar_kerja_praktik.pdf'
+}
+
+const sidangSkripsi = {
+  syarat: [
+    'Silahkan unduh berkas persayaratan untuk pengajuan',
+    'Isi data-data yang dibutuhkan dalam surat tersebut',
+    'Ajukan transkrip nilai jika tidak ada',
+    'Screenshoot rekap pembayaran sidangg skripsi melalui SIAKAD',
+    'Masukan penugasan dosen skripsi/tugas akhir',
+    'Masukan sisa persayaratan administrasi daftar seminar tugas akhir',
+    'Upload semua berkas dalam satu file pdf',
+    'Buku laporan KP 2 jilid',
+    'Pengajuan anda akan ditinjau oleh admin',
+    'Berkas akan dikirim melalui aplikasi ini, karena itu silahkan cek secara berkala'
+  ],
+  title: 'Sidang skripsi',
+  url: '/sempro/sempro.pdf',
+  fileName: 'Seminar_kerja_praktik.pdf'
+}
+
 const objectDataDummy = () => {
   return {
     keterangan: [
@@ -296,5 +351,8 @@ export {
   judulSkripsi,
   pengantarKp,
   transkripNilai,
-  yudisium
+  yudisium,
+  sempro,
+  seminarKerjaPraktik,
+  sidangSkripsi
 };

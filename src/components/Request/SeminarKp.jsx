@@ -1,7 +1,34 @@
-const SeminarKp = () => {
+import { seminarKerjaPraktik } from "../../utils/constant";
+import Pengajuan from "../ui/Pengajuan";
+import LinkTranskrip from "../ui/LinkTranskrip";
+
+const ChildrenSempro = () => {
   return (
-    <div>SeminarKp</div>
-  )
+    <>
+      <LinkTranskrip
+        path={"/dashboard/request/transkripnilai"}
+        content={" Link pengajuan transkrip nilai"}
+      />
+      <LinkTranskrip
+        path={"dashboard/request/suratpenugasan/dosentugasakhir"}
+        content={"Link pengajuan surat penugasan dosen"}
+      />
+    </>
+  );
+};
+
+const SeminarKp = () => {
+   const { syarat, title, url, fileName } = seminarKerjaPraktik;
+  return (
+    <Pengajuan
+      syarat={syarat}
+      url={url}
+      fileName={fileName}
+      title={title}
+      isDisplay={false}
+      children={<ChildrenSempro />}
+    />
+  );
 }
 
 export default SeminarKp

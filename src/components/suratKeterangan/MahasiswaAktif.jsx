@@ -1,12 +1,31 @@
 import Pengajuan from "../ui/Pengajuan";
 import { pengajuanMahasiswaAktif } from "../../utils/constant";
+import { useState } from "react";
+// import { postrequest } from "../../utils/api/request";
+import { useNavigate } from "react-router"
+import { requestPengajuan } from "../../utils/action";
 
 const MahasiswaAktif = () => {
-  const { syarat, title, url, fileName } = pengajuanMahasiswaAktif;
- return (
-    <Pengajuan url={url} syarat={syarat} title={title} fileName={fileName} />
- )
-  
-}
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
-export default MahasiswaAktif
+  const submitHandler = async(e) => {
+    e.preventDefault(); 
+    await requestPengajuan("Mahasiswa Aktif", message, navigate)
+  };
+
+  const { syarat, title, url, fileName } = pengajuanMahasiswaAktif;
+  return (
+    <Pengajuan
+      submitHandler={submitHandler}
+      message={message}
+      setMessage={setMessage}
+      url={url}
+      syarat={syarat}
+      title={title}
+      fileName={fileName}
+    />
+  );
+};
+
+export default MahasiswaAktif;

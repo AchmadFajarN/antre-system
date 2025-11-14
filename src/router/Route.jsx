@@ -11,7 +11,7 @@ import Dashboard from "../pages/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
 import DashboardRequest from "../components/Dashboard/DashboardRequest";
 import DashboardUser from "../components/Dashboard/DashboardUser";
-import DashboardAdmin from "../components/Dashboard/DashboardAdmin";
+
 
 // admin
 import LayoutAdmin from "../components/admin/LayoutAdmin";
@@ -46,6 +46,10 @@ import ListPenugasan from "../components/Penugasan/ListPenugasan";
 import DosenKerjaPraktik from "../components/Penugasan/DosenKerjaPraktik";
 import DosenSkripsi from "../components/Penugasan/DosenSkripsi";
 
+// User
+import UserBio from "../components/User/UserBio";
+import FormUpdateUser from "../components/dashboardUser/FormUpdateUser";
+
 
 const Router = createBrowserRouter([
   {
@@ -68,7 +72,18 @@ const Router = createBrowserRouter([
       },
       {
         path: 'user',
-        Component: DashboardUser
+        Component: DashboardUser,
+        children: [
+          {
+            index: true,
+            Component: UserBio
+          },
+          {
+            path: 'update',
+            Component: FormUpdateUser
+          }
+        ]
+        
       },
       {
         path: 'request',

@@ -22,7 +22,7 @@ const DashboardHome = () => {
   }, [])
 
   return (
-    <div className="xl:pl-[28%] py-20 px-8 bg-slate-100">
+    <div className="xl:pl-[28%] py-20 px-8 bg-slate-100 min-h-screen">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-slate-800">Dashboard</h1>
         <Link to={'/dashboard/request'} className="p-2 font-semibold border-2 border-transparent hover:border-slate-800 hover:bg-transparent transition-colors transition-duration flex items-center bg-yellow-500 rounded-md gap-2 text-sm"> <Plus size={20} /> Tambah Pengajuan</Link>

@@ -13,9 +13,8 @@ export default function StraightAnglePieChart({ isAnimationActive = true }) {
 
   return (
     <PieChart
-      width={500}
-      height={300}
-      style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh' }}
+      
+      style={{ width: '100%', height: "20vh", paddingBottom: "8px" }}
     >
       {/* Label Judul Chart */}
      

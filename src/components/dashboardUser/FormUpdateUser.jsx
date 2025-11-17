@@ -3,15 +3,13 @@ import { useState } from "react";
 import { updateProfile } from "../../utils/api/user";
 import { AdvancedImage } from "@cloudinary/react";
 import Cld from "../../utils/cloudinary.config";
-import { useUser } from "../../utils/hooks/userContext"
+import { useUser } from "../../utils/hooks/userContext";
 import { useNavigate } from "react-router";
 
 const FormUpdateUser = () => {
   const navigate = useNavigate();
   const { updateUserData } = useUser();
-  const { email, phone, username } = JSON.parse(
-    localStorage.getItem("user")
-  );
+  const { email, phone, username } = JSON.parse(localStorage.getItem("user"));
 
   const { url_photo: initialUrl } = JSON.parse(localStorage.getItem("user"));
   const [usernameInput, setUsername] = useState(username);
@@ -33,18 +31,14 @@ const FormUpdateUser = () => {
 
     if (response.status === "success") {
       updateUserData(response.data);
-      navigate("/dashboard/user")
+      navigate("/dashboard/user");
     }
-
   };
 
   return (
     <div className="w-md bg-white/50   px-4 py-8 rounded-md shadow-md">
       <div className="size-30 mx-auto shadow-md p-2 rounded-md overflow-hidden">
-        <AdvancedImage
-          className="w-full h-full object-top object-cover"
-          cldImg={Cld.image(urlPhoto)}
-        />
+        <img className="w-full h-full object-top object-cover" src={urlPhoto} alt="foto user"/>
       </div>
       <UploadWidget setPublicId={setUrlPhoto} />
       <form onSubmit={onSubmitHandler}>

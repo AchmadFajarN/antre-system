@@ -16,14 +16,14 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const responseLogin = await login({ email, password });
-    if (responseLogin.message === 'Login success') {
+    if (responseLogin.status === 'success') {
 
-      localStorage.setItem('tokenKey', responseLogin.access_token)
-      updateUserData(responseLogin.user);
-      localStorage.setItem('user', JSON.stringify(responseLogin.user));
+      localStorage.setItem('tokenKey', responseLogin.data.access_token)
+      updateUserData(responseLogin.data.user);
+      localStorage.setItem('user', JSON.stringify(responseLogin.data.user));
       navigate('/dashboard');
-      console.log(responseLogin);
-      if(responseLogin.user.role === "admin") {
+
+      if(responseLogin.data.user.role === "admin") {
         navigate("/admin")
       }
     }

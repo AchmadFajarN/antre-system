@@ -15,6 +15,9 @@ import DashboardUser from "../components/Dashboard/DashboardUser";
 
 // admin
 import LayoutAdmin from "../components/admin/LayoutAdmin";
+import User from "../components/admin/User";
+import RequestAdmin from "../components/admin/RequestAdmin";
+import MainAdmin from "../components/admin/MainAdmin";
 
 
 // Request
@@ -185,7 +188,21 @@ const Router = createBrowserRouter([
   },
   {
     path: '/admin',
-    Component: LayoutAdmin
+    Component: LayoutAdmin,
+    children: [
+      {
+        index: true,
+        Component: MainAdmin
+      },
+      {
+        path: "user",
+        Component: User
+      },
+      {
+        path: "pengajuan",
+        Component: RequestAdmin
+      }
+    ]
   }
 ]);
 

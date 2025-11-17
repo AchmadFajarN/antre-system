@@ -30,13 +30,42 @@ const data = [
     name: '07',
     uv: 1,
   },
+   {
+    name: '01',
+    uv: 2,
+  },
+  {
+    name: '02',
+    uv: 7,
+  },
+  {
+    name: '03',
+    uv: 1,
+  },
+  {
+    name: '04',
+    uv: 5,
+  },
+  {
+    name: '05',
+    uv: 3,
+  },
+  {
+    name: '06',
+    uv: 1,
+  },
+  {
+    name: '07',
+    uv: 1,
+  },
+  
 ];
 
 // #endregion
 const SimpleAreaChart = () => {
   return (
     <AreaChart
-      style={{ width: '100%', maxWidth: '700px', maxHeight: '90vh', aspectRatio: 1.618 }}
+      style={{ width: '100%', maxHeight: '50vh', aspectRatio: 1.618 }}
       responsive
       data={data}
       margin={{

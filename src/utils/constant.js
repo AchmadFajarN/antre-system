@@ -270,79 +270,51 @@ const sidangSkripsi = {
   fileName: 'Seminar_kerja_praktik.pdf'
 }
 
-const objectDataDummy = () => {
-  return {
-    keterangan: [
-      {
-        id: "keterangan-1",
-        jenis: "keterangan mahasiswa aktif",
-        status: "menunggu",
-        tanggal: "2025-01-04",
-      },
-      {
-        id: "keterangan-2",
-        jenis: "Keterangan lulus",
-        status: "success",
-        tanggal: "2025-03-01",
-      },
-    ],
-    pengajuan: [
-      {
-        id: "pengajuan-1",
-        jenis: "Judul Kerja Praktik",
-        status: "success",
-        tanggal: "2025-08-04",
-      },
-    ],
-    penugasan: [
-      {
-        id: "penugasan-2",
-        jenis: "Penugasan Dosen Pembimbing Kerja Praktik",
-        status: "reject",
-        tanggal: "2025-08-02",
-      },
-      {
-        id: "penugasan-3",
-        jenis: "Penugasan Dosen Pembimbing Kerja Praktik",
-        status: "success",
-        tanggal: "2025-08-02",
-      },
-    ],
-    transkripNilai: [
-      {
-        id: "transkrip-1",
-        status: "reject",
-        tanggal: "2025-10-02",
-      },
-    ],
-  };
-};
 
-const data = objectDataDummy();
-const allData = Object.values(data).flat();
 
-// const statusCount =  allData.reduce((acc, item) => {
-//     acc[item.jenis] = (acc[item.jenis] || 0) + 1;
-//     return acc;
-//   }, {});
-
-// console.log(statusCount)
-
-const monthCount = allData.reduce((acc, item) => {
-  const month = new Date(item.tanggal).toLocaleString("default", {
-    month: "short",
-  });
-  acc[month] = (acc[month] || 0) + 1;
-  return acc;
-}, {});
-console.log(monthCount);
+const request = [
+  {
+    id: "001",
+    created: "2025-10-20",
+    user: "User 1",
+    type: "mahasiswa aktif",
+    queue: "MAH251020-002"
+  },
+  {
+    id: "002",
+    created: "2025-06-03",
+    user: "user 2",
+    type: "Transikripsi",
+    queue: "TRA251101-001"
+  },
+   {
+    id: "003",
+    created: "2025-06-03",
+    user: "user 2",
+    type: "Transikripsi",
+    queue: "TRA251101-001"
+  },
+   {
+    id: "004",
+    created: "2025-06-03",
+    user: "user 2",
+    type: "Transikripsi",
+    queue: "TRA251101-001"
+  },
+   {
+    id: "005",
+    created: "2025-06-03",
+    user: "user 2",
+    type: "Transikripsi",
+    queue: "TRA251101-001"
+  },
+]
 
 export {
   kategoriPermintaan,
   kategoriKeterangan,
   kategoriPengajuan,
   kategoriPenugasan,
-  objectDataDummy,
   pengajuanMahasiswaAktif,
   pengajuanCuti,
   keteranganLulus,
@@ -354,5 +326,6 @@ export {
   yudisium,
   sempro,
   seminarKerjaPraktik,
-  sidangSkripsi
+  sidangSkripsi,
+  request
 };

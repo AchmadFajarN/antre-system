@@ -1,7 +1,6 @@
 import Pengajuan from "../ui/Pengajuan";
 import { pengajuanMahasiswaAktif } from "../../utils/constant";
 import { useState } from "react";
-// import { postrequest } from "../../utils/api/request";
 import { useNavigate } from "react-router"
 import { requestPengajuan } from "../../utils/action";
 

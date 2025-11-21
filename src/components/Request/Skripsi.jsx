@@ -1,6 +1,9 @@
 import { sidangSkripsi } from "../../utils/constant";
 import Pengajuan from "../ui/Pengajuan";
 import LinkTranskrip from "../ui/LinkTranskrip";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { requestPengajuan } from "../../utils/action";
 
 const ChildrenSempro = () => {
   return (
@@ -18,9 +21,18 @@ const ChildrenSempro = () => {
 };
 
 const Skripsi = () => {
-   const { syarat, title, url, fileName } = sidangSkripsi;
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    await requestPengajuan("Sidang skripsi", message, navigate);
+  };
+  const { syarat, title, url, fileName } = sidangSkripsi;
   return (
     <Pengajuan
+      message={message}
+      setMessage={setMessage}
+      submitHandler={submitHandler}
       syarat={syarat}
       url={url}
       fileName={fileName}
@@ -29,6 +41,6 @@ const Skripsi = () => {
       children={<ChildrenSempro />}
     />
   );
-}
+};
 
-export default Skripsi
+export default Skripsi;

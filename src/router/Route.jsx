@@ -5,20 +5,19 @@ import App from "../App";
 // Auth
 import Login from "../components/Auth/Login";
 
-
 // Dashboard
 import Dashboard from "../pages/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
 import DashboardRequest from "../components/Dashboard/DashboardRequest";
 import DashboardUser from "../components/Dashboard/DashboardUser";
 
-
 // admin
 import LayoutAdmin from "../components/admin/LayoutAdmin";
-import User from "../components/admin/User";
+import User from "../components/admin/user/User";
 import RequestAdmin from "../components/admin/RequestAdmin";
 import MainAdmin from "../components/admin/MainAdmin";
-
+import LayoutUser from "../components/admin/LayoutUser";
+import UserDetail from "../components/admin/user/UserDetail";
 
 // Request
 import Request from "../components/Request/Request";
@@ -53,7 +52,6 @@ import DosenSkripsi from "../components/Penugasan/DosenSkripsi";
 import UserBio from "../components/User/UserBio";
 import FormUpdateUser from "../components/dashboardUser/FormUpdateUser";
 
-
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -74,136 +72,145 @@ const Router = createBrowserRouter([
         Component: DashboardHome,
       },
       {
-        path: 'user',
+        path: "user",
         Component: DashboardUser,
         children: [
           {
             index: true,
-            Component: UserBio
+            Component: UserBio,
           },
           {
-            path: 'update',
-            Component: FormUpdateUser
-          }
-        ]
-        
+            path: "update",
+            Component: FormUpdateUser,
+          },
+        ],
       },
       {
-        path: 'request',
+        path: "request",
         Component: DashboardRequest,
         children: [
           {
             index: true,
-            Component: Request
-          }, 
+            Component: Request,
+          },
           {
-            path: 'suratketerangan',
+            path: "suratketerangan",
             Component: SuratKeterangan,
             children: [
               {
                 index: true,
-                Component: ListKeterangan
+                Component: ListKeterangan,
               },
               {
-                path: 'cuti',
-                Component: KeteranganCuti
+                path: "cuti",
+                Component: KeteranganCuti,
               },
               {
-                path: 'mahasiswaaktif',
-                Component: MahasiswaAktif
+                path: "mahasiswaaktif",
+                Component: MahasiswaAktif,
               },
               {
-                path: 'keteranganlulus',
-                Component: KeteranganLulus
+                path: "keteranganlulus",
+                Component: KeteranganLulus,
               },
               {
-                path: 'pengundurandiri',
-                Component: PengunduranDiri
-              }     
-            ]
+                path: "pengundurandiri",
+                Component: PengunduranDiri,
+              },
+            ],
           },
           {
-            path: 'suratpengajuan',
+            path: "suratpengajuan",
             Component: SuratPengajuan,
             children: [
               {
                 index: true,
-                Component: ListPengajuan
+                Component: ListPengajuan,
               },
               {
-                path: 'kerjapraktik',
-                Component: KerjaPraktik
+                path: "kerjapraktik",
+                Component: KerjaPraktik,
               },
               {
-                path: 'judulskripsi',
-                Component: JudulSkripsi
+                path: "judulskripsi",
+                Component: JudulSkripsi,
               },
               {
-                path: 'pengantar-kerja-praktik',
-                Component: PengantarKerjaPraktik
-              }
-            ]
+                path: "pengantar-kerja-praktik",
+                Component: PengantarKerjaPraktik,
+              },
+            ],
           },
           {
-            path: 'suratpenugasan',
+            path: "suratpenugasan",
             Component: SuratPenjugasan,
             children: [
               {
                 index: true,
-                Component: ListPenugasan
+                Component: ListPenugasan,
               },
               {
-                path: 'dosenkerjapraktik',
-                Component: DosenKerjaPraktik
+                path: "dosenkerjapraktik",
+                Component: DosenKerjaPraktik,
               },
               {
-                path: 'dosentugasakhir',
-                Component: DosenSkripsi
-              }
-            ]
+                path: "dosentugasakhir",
+                Component: DosenSkripsi,
+              },
+            ],
           },
           {
-            path: 'transkripnilai',
-            Component: TranskripNilai
+            path: "transkripnilai",
+            Component: TranskripNilai,
           },
           {
-            path: 'yudisium',
-            Component: Yudisium
+            path: "yudisium",
+            Component: Yudisium,
           },
           {
-            path: 'pengajuansempro',
-            Component: SuratSempro
+            path: "pengajuansempro",
+            Component: SuratSempro,
           },
           {
-            path: 'seminarkp',
-            Component: SeminarKp
+            path: "seminarkp",
+            Component: SeminarKp,
           },
           {
-            path: 'skripsi',
-            Component: Skripsi
-          }  
-        ]
-      }
+            path: "skripsi",
+            Component: Skripsi,
+          },
+        ],
+      },
     ],
   },
   {
-    path: '/admin',
+    path: "/admin",
     Component: LayoutAdmin,
     children: [
       {
         index: true,
-        Component: MainAdmin
+        Component: MainAdmin,
       },
       {
         path: "user",
-        Component: User
+        Component: LayoutUser,
+        children: [
+          {
+            index: true,
+            Component: User,
+          },
+          {
+            path: ":id",
+            Component: UserDetail
+          },
+        ],
       },
       {
         path: "pengajuan",
-        Component: RequestAdmin
-      }
-    ]
-  }
+        Component: RequestAdmin,
+      },
+    ],
+  },
 ]);
 
 export default Router;

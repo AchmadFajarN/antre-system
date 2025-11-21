@@ -4,22 +4,30 @@ import { Link } from "react-router"
 import { Plus } from "lucide-react"
 import { useEffect, useState } from "react"
 import CardDashboard from "../ui/CardDashboard"
-import { getCurrentRequestValue } from "../../utils/api/dashboardValue"
+import { getRequest } from "../../utils/api/request"
 
 const DashboardHome = () => {
-  const [currentData, setCurrentData] = useState(null);
+  const [historRequest, setHistoryRequest] = useState([])
 
-  useEffect(() => {
-    const getVCurrentValue = async() => {
+   useEffect(() => {
+    const getRequestHandler = async () => {
       const token = localStorage.getItem("tokenKey");
-      const currentData = await getCurrentRequestValue(token);
-      console.log(currentData);
-      setCurrentData(currentData)
-      return currentData;
-    }
+      const user = localStorage.getItem("user");
+      const userId = JSON.parse(user).id;
+      const result = await getRequest(token, userId);
+      if (result.status === "success") {
+        console.log(result.data);
+        setHistoryRequest(result.data);
+      }
+    };
 
-    getVCurrentValue();
-  }, [])
+    getRequestHandler();
+  }, []);
+
+  const totalRequest = historRequest.length;
+  const successRequest = historRequest.filter((req) => req.status === "completed").length;
+  const procesingRequest = historRequest.filter((req) => req.status === "pending").length;
+  const rejectedRequest = historRequest.filter((req) => req.status === "rejected").length;
 
   return (
     <div className="xl:pl-[28%] py-20 px-8 bg-slate-100 min-h-screen">
@@ -29,12 +37,12 @@ const DashboardHome = () => {
       </div>
       <Underline />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 mb-8 md:gap-4">
-        <CardDashboard title={"Total pengajuan"} value={currentData?.total_requests} />
-        <CardDashboard title={"Pengajuan yang diterima"} value={currentData?.requests_accepted} />
-        <CardDashboard title={"Pengajuan yang diproses"} value={currentData?.requests_processing} />
-        <CardDashboard title={"Pengajuan yang ditolak"} value={currentData?.requests_rejected} />
+        <CardDashboard title={"Total pengajuan"} value={totalRequest} />
+        <CardDashboard title={"Pengajuan yang diterima"} value={successRequest} />
+        <CardDashboard title={"Pengajuan yang diproses"} value={procesingRequest} />
+        <CardDashboard title={"Pengajuan yang ditolak"} value={rejectedRequest} />
       </div>
-      <TableRiwayat />
+      <TableRiwayat historyRequest={historRequest} />
     </div>
   )
 }

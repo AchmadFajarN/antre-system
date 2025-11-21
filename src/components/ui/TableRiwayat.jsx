@@ -1,28 +1,11 @@
 import Underline from "./Underline";
-import { useEffect, useState } from "react";
-import { getRequest } from "../../utils/api/request";
-// import { useUser } from "../../utils/hooks/userContext";
 
-const TableRiwayat = () => {
-  const [historyRequest, setHistoryRequest] = useState([]);
-  useEffect(() => {
-    const getRequestHandler = async () => {
-      const token = localStorage.getItem("tokenKey");
-      const user = localStorage.getItem("user");
-      const userId = JSON.parse(user).id;
-      const result = await getRequest(token, userId);
-      if (result.status === "success") {
-        console.log(result.data);
-        setHistoryRequest(result.data);
-      }
-    };
+const TableRiwayat = ({ historyRequest }) => {
 
-    getRequestHandler();
-  }, []);
   const propertyTable = [
     "antrian",
-    "tipe",
     "tanggal Pengajuan",
+    "tipe",
     "Permintaan",
     "status",
   ];
@@ -64,15 +47,15 @@ const TableRiwayat = () => {
                   <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                     {value.queue}
                   </td>
-                  <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    {value.type}
-                  </td>
-                  <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
+                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                     {new Date(value.updated_at).toLocaleDateString("id-ID", {
                       year: "numeric",
                       month: "2-digit",
                       day: "2-digit"
                     })}
+                  </td>
+                  <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
+                    {value.type}
                   </td>
                   <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                     {value.request}

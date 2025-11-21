@@ -17,7 +17,14 @@ const RequestAdmin = () => {
 
     getAllRequest();
   }, []);
-  const dataKey = [
+  return (
+    <TablePengajuan requests={ requests } />
+  )
+};
+
+export const TablePengajuan = ({ requests }) => {
+   const dataKey = [
+    "No",
     "Antrian",
     "Type",
     "Created At",
@@ -25,7 +32,7 @@ const RequestAdmin = () => {
     "action",
   ];
   return (
-    <div className="px-4 py-6 mt-8 bg-white shadow-md w-full">
+    <div className="px-4 py-6 mt-8 bg-white rounded-md shadow-md w-full">
       <h1 className="font-semibold md:text-xl uppercase">Pengajuan</h1>
       <span className="inline-block w-8 h-1 bg-gray-800"></span>
       <div className="mt-8 overflow-x-auto py-8">
@@ -44,10 +51,14 @@ const RequestAdmin = () => {
           </thead>
           <tbody>
             {requests.map((value, index) => (
+              
               <tr
                 key={index}
                 className="flex flex-row hover:shadow-md cursor-pointer transition-all transition-duration justify-between gap-4 items-center md:table-row mb-4 md:mb-0 md:border-b-4 border-gray-600 md:border-none md:p-0"
               >
+                 <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
+                  {index + 1}
+                </td>
                 <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                   {value.queue}
                 </td>
@@ -92,7 +103,7 @@ const RequestAdmin = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default RequestAdmin;

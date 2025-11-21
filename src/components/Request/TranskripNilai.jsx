@@ -1,11 +1,27 @@
-import { transkripNilai } from "../../utils/constant"
-import Pengajuan from '../ui/Pengajuan.jsx'
+import { transkripNilai } from "../../utils/constant";
+import Pengajuan from "../ui/Pengajuan.jsx";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { requestPengajuan } from "../../utils/action";
 
 const TranskripNilai = () => {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    await requestPengajuan("Transkrip nilai", message, navigate);
+  };
   const { syarat, title } = transkripNilai;
   return (
-    <Pengajuan syarat={syarat} title={title} isDisplay={true} />
-  )
-}
+    <Pengajuan
+      message={message}
+      setMessage={setMessage}
+      submitHandler={submitHandler}
+      syarat={syarat}
+      title={title}
+      isDisplay={true}
+    />
+  );
+};
 
-export default TranskripNilai
+export default TranskripNilai;

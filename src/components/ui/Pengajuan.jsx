@@ -48,6 +48,7 @@ const Pengajuan = ({
           action=""
         >
           <input
+            required
             type="text"
             className="input-pengajuan"
             placeholder={placeholder ? placeholder : "message"}

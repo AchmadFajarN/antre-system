@@ -61,4 +61,25 @@ const getAllUserForAdmin = async (token) => {
   }
 };
 
-export { getUser, updateProfile, getAllUserForAdmin };
+const getUserDetail = async (token, userId) => {
+  try {
+    const result = await Axios.get(
+      `${BASE_URL}/users/${ userId }`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const users = await result.data;
+    return users;
+  } catch (err) {
+    return {
+      success: false,
+      error: err.response.data,
+    };
+  }
+};
+
+export { getUser, updateProfile, getAllUserForAdmin, getUserDetail };

@@ -7,10 +7,11 @@ import { useNavigate } from "react-router";
 const PengunduranDiri = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFIle] = useState(null);
   const { title, syarat, url, fileName } = pengunduranDiri;
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Pengunduran diri", message, navigate);
+    await requestPengajuan("Pengunduran diri", message, file, navigate);
   };
   return (
     <Pengajuan
@@ -21,6 +22,7 @@ const PengunduranDiri = () => {
       syarat={syarat}
       title={title}
       fileName={fileName}
+      setFile={setFIle}
     />
   );
 };

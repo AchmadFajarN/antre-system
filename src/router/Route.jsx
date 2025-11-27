@@ -14,10 +14,12 @@ import DashboardUser from "../components/Dashboard/DashboardUser";
 // admin
 import LayoutAdmin from "../components/admin/LayoutAdmin";
 import User from "../components/admin/user/User";
-import RequestAdmin from "../components/admin/RequestAdmin";
+import RequestLayout from "../components/admin/RequestLayout"
 import MainAdmin from "../components/admin/MainAdmin";
 import LayoutUser from "../components/admin/LayoutUser";
 import UserDetail from "../components/admin/user/UserDetail";
+import RequestAdmin from "../components/admin/request/Requets";
+import RequestDetail from "../components/admin/request/RequestDetail";
 
 // Request
 import Request from "../components/Request/Request";
@@ -207,7 +209,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "pengajuan",
-        Component: RequestAdmin,
+        Component: RequestLayout,
+        children: [
+          {
+            index: true,
+            Component: RequestAdmin
+          },
+          {
+            path: ":id",
+            Component: RequestDetail
+          }
+        ]
       },
     ],
   },

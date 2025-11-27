@@ -22,9 +22,10 @@ const ChildrenSempro = () => {
 const SuratSempro = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const submitHandler = async(e) => {
     e.preventDefault();
-    await requestPengajuan("Surat Sempro", message, navigate)
+    await requestPengajuan("Surat Sempro", message, file, navigate)
   }
   const { syarat, title, url, fileName } = sempro;
   return (
@@ -37,6 +38,7 @@ const SuratSempro = () => {
       fileName={fileName}
       title={title}
       isDisplay={false}
+      setFile={setFile}
       children={<ChildrenSempro />}
     />
   );

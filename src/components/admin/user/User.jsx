@@ -9,8 +9,10 @@ const User = () => {
     const getUsers = async () => {
       const token = localStorage.getItem("tokenKey");
       const result = await getAllUserForAdmin(token);
-      console.log(result)
-      setUsers(result);
+      console.log(result);
+      if (result.status === "success") {
+        setUsers(result.data);
+      }
     };
 
     getUsers();
@@ -51,7 +53,10 @@ const User = () => {
                   className="flex flex-row hover:shadow-md cursor-pointer transition-all transition-duration justify-between gap-4 items-center md:table-row mb-4 md:mb-0 md:border-b-4 border-gray-600 md:border-none md:p-0"
                 >
                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`} className="block size-16 rounded-full overflow-hidden">
+                    <Link
+                      to={`/admin/user/${value.id}`}
+                      className="block size-16 rounded-full overflow-hidden"
+                    >
                       {value?.url_photo ? (
                         <img
                           className="w-full h-full object-center object-cover"
@@ -68,29 +73,21 @@ const User = () => {
                     </Link>
                   </td>
                   <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`}>
-                      {value.username}
-                    </Link>
+                    <Link to={`/admin/user/${value.id}`}>{value.username}</Link>
                   </td>
                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`}>
-                      {value.nim}
-                    </Link>
+                    <Link to={`/admin/user/${value.id}`}>{value.nim}</Link>
                   </td>
                   <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`}>
+                    <Link to={`/admin/user/${value.id}`}>
                       {value.full_name}
                     </Link>
                   </td>
                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`}>
-                      {value.email}
-                    </Link>
+                    <Link to={`/admin/user/${value.id}`}>{value.email}</Link>
                   </td>
                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    <Link to={`/admin/user/${ value.id }`}>
-                      {value.phone}
-                    </Link>
+                    <Link to={`/admin/user/${value.id}`}>{value.phone}</Link>
                   </td>
                   <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                     <div className="flex block gap-2">

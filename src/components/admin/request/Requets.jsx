@@ -1,6 +1,7 @@
 import { Trash, Pen } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getAllRequestForAdmin } from "../../utils/api/request";
+import { getAllRequestForAdmin } from "../../../utils/api/request";
+import { Link } from "react-router";
 
 const RequestAdmin = () => {
   const [requests, setRequests] = useState([]);
@@ -17,20 +18,11 @@ const RequestAdmin = () => {
 
     getAllRequest();
   }, []);
-  return (
-    <TablePengajuan requests={ requests } />
-  )
+  return <TablePengajuan requests={requests} />;
 };
 
 export const TablePengajuan = ({ requests }) => {
-   const dataKey = [
-    "No",
-    "Antrian",
-    "Type",
-    "Created At",
-    "status",
-    "action",
-  ];
+  const dataKey = ["No", "Antrian", "Type", "Created At", "status", "action"];
   return (
     <div className="px-4 py-6 mt-8 bg-white rounded-md shadow-md w-full">
       <h1 className="font-semibold md:text-xl uppercase">Pengajuan</h1>
@@ -51,26 +43,27 @@ export const TablePengajuan = ({ requests }) => {
           </thead>
           <tbody>
             {requests.map((value, index) => (
-              
               <tr
                 key={index}
                 className="flex flex-row hover:shadow-md cursor-pointer transition-all transition-duration justify-between gap-4 items-center md:table-row mb-4 md:mb-0 md:border-b-4 border-gray-600 md:border-none md:p-0"
               >
-                 <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                  {index + 1}
+                <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
+                  <Link to={`/admin/pengajuan/${value.id}`}>{index + 1}</Link>
                 </td>
                 <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                  {value.queue}
+                  <Link to={`/admin/pengajuan/${value.id}`}>{value.queue}</Link>
                 </td>
                 <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                  {value.type}
+                  <Link to={`/admin/pengajuan/${value.id}`}>{value.type}</Link>
                 </td>
                 <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                  {new Date(value.updated_at).toLocaleDateString("id-ID", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
+                  <Link to={`/admin/pengajuan/${value.id}`}>
+                    {new Date(value.updated_at).toLocaleDateString("id-ID", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })}
+                  </Link>
                 </td>
                 <td className="md:px-6 uppercase py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                   <span
@@ -103,7 +96,7 @@ export const TablePengajuan = ({ requests }) => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RequestAdmin;

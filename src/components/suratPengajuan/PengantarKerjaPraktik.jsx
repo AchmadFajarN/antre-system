@@ -8,12 +8,13 @@ import { useNavigate } from "react-router";
 const PengantarKerjaPraktik = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const { syarat, url, fileName, title } = pengantarKp;
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Pengantar Kerja Praktik", message, navigate);
-  }
+    await requestPengajuan("Pengantar Kerja Praktik", message, file, navigate);
+  };
   return (
     <Pengajuan
       submitHandler={submitHandler}
@@ -23,6 +24,7 @@ const PengantarKerjaPraktik = () => {
       url={url}
       fileName={fileName}
       title={title}
+      setFile={setFile}
       children={
         <LinkTranskrip
           path={"/dashboard/request/transkripnilai"}

@@ -10,7 +10,7 @@ const KeteranganLulus = () => {
   const { syarat, title } = keteranganLulus;
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Keterangan lulus", message, navigate);
+    await requestPengajuan("Keterangan lulus", message, null, navigate);
   };
   return (
     <Pengajuan

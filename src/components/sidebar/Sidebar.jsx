@@ -1,8 +1,5 @@
 import { LayoutDashboard, LogOut, User, Send } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router";
-import Cld from "../../utils/cloudinary.config";
-import { AdvancedImage } from "@cloudinary/react";
-import { logout } from "../../utils/api/auth";
 import { useUser } from "../../utils/hooks/userContext";
 
 
@@ -15,14 +12,9 @@ const Sidebar = ({ activeSidebar, setActiveSideBar }) => {
     const token = localStorage.getItem("tokenKey");
 
     if (token) {
-      const response = await logout(token);
       navigate("/");
       localStorage.removeItem("tokenKey");
       localStorage.removeItem("user");
-
-      if (response.status === "error") {
-        console.log(response);
-      }
     }
   };
   const { pathname } = useLocation();

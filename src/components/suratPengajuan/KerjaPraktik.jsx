@@ -8,12 +8,13 @@ import { requestPengajuan } from "../../utils/action";
 const KerjaPraktik = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const { syarat, url, title, fileName } = judulKerjaPraktik;
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Judul Kerja Praktik", message, navigate);
-  }
+    await requestPengajuan("Judul Kerja Praktik", message, file, navigate);
+  };
   return (
     <Pengajuan
       url={url}
@@ -23,7 +24,13 @@ const KerjaPraktik = () => {
       submitHandler={submitHandler}
       title={title}
       fileName={fileName}
-      children={<LinkTranskrip path={"/dashboard/request/transkripnilai"} content={' Link pengajuan transkrip nilai'} />}
+      setFile={setFile}
+      children={
+        <LinkTranskrip
+          path={"/dashboard/request/transkripnilai"}
+          content={" Link pengajuan transkrip nilai"}
+        />
+      }
     />
   );
 };

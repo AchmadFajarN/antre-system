@@ -16,7 +16,7 @@ const DashboardHome = () => {
       const userId = JSON.parse(user).id;
       const result = await getRequest(token, userId);
       if (result.status === "success") {
-        console.log(result.data);
+        console.log(result);
         setHistoryRequest(result.data);
       }
     };

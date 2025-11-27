@@ -48,7 +48,7 @@ const TableRiwayat = ({ historyRequest }) => {
                     {value.queue}
                   </td>
                    <td className="md:px-6 py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    {new Date(value.updated_at).toLocaleDateString("id-ID", {
+                    {new Date(value.created_at).toLocaleDateString("id-ID", {
                       year: "numeric",
                       month: "2-digit",
                       day: "2-digit"
@@ -58,7 +58,7 @@ const TableRiwayat = ({ historyRequest }) => {
                     {value.type}
                   </td>
                   <td className="md:px-6 hidden py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
-                    {value.request}
+                    {value.message}
                   </td>
                   <td className="md:px-6 uppercase py-2 md:py-4 text-left text-xs md:text-[16px] font-medium tracking-wide md:table-cell">
                     <span className={`px-2 py-1 rounded-md ${ value.status === "completed" && "bg-green-300 text-green-800" } ${ value.status === "pending" && "bg-yellow-400 text-yellow-800" } ${ value.status === "canceled" && "bg-red-400 text-red-800" }`}>

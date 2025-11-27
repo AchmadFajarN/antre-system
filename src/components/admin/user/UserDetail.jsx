@@ -3,8 +3,7 @@ import { getRequest } from "../../../utils/api/request";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import CardDashboard from "../../ui/CardDashboard";
-import TableRiwayat from "../../ui/TableRiwayat";
-import { TablePengajuan } from "../RequestAdmin";
+import { TablePengajuan } from "../request/Requets";
 
 const UserDetail = () => {
   const [userDetail, setUserDetail] = useState(null);
@@ -13,16 +12,16 @@ const UserDetail = () => {
 
   useEffect(() => {
     const getDetailUser = async () => {
+      // ambil user detail lalu ambil request berdasarkan id
       const token = localStorage.getItem("tokenKey");
       const result = await getUserDetail(token, userId);
-      console.log(result);
-      setUserDetail(result);
+      if (result.status === "success") {
+        setUserDetail(result.data);
+      }
 
-      const requestUser = await getRequest(token, result.id);
-      console.log(requestUser);
-
-      if (requestUser.status === "success") {
-        setRequest(requestUser.data);
+      const requestResult = await getRequest(token, userId);
+      if (requestResult.status === "success") {
+        setRequest(requestResult.data);
       }
     };
 

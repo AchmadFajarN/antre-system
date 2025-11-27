@@ -3,19 +3,17 @@ import BASE_URL from "./index.js";
 
 const login = async ({ email, password }) => {
   try {
-    const response = await Axios.post(
-      `${BASE_URL}/login`,
-      { email, password },
-      { timeout: 5000 }
-    );
+    const response = await Axios.post(`${BASE_URL}/auth/login`, {
+      email,
+      password,
+    });
     return response.data;
   } catch (err) {
-    if (err) {
-      return {
-        status: "error",
-        message: err.response.data,
-      };
-    }
+    console.log(err);
+    return {
+      status: "error",
+      message: err.response.data.message,
+    };
   }
 };
 
@@ -32,7 +30,7 @@ const logout = async (token) => {
   } catch (err) {
     return {
       status: "error",
-      message: err.response,
+      message: err.response.data,
     };
   }
 };

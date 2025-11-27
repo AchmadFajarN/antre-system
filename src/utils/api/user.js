@@ -16,15 +16,24 @@ const getUser = async (token) => {
   }
 };
 
-const updateProfile = async (token, { username, email, phone, url_photo }) => {
+const updateProfile = async (
+  { username, email, phone, url_photo, full_name },
+  updateUserData,
+  updateUser,
+  navigate
+) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("tokenKey");
+  const { id } = user;
   try {
     const response = await Axios.put(
-      `${BASE_URL}/profile`,
+      `${BASE_URL}/users/${id}`,
       {
         username,
         email,
         phone,
         url_photo,
+        full_name,
       },
       {
         headers: {
@@ -33,12 +42,16 @@ const updateProfile = async (token, { username, email, phone, url_photo }) => {
         },
       }
     );
-    return {
-      data: response.data,
-      status: "success",
-    };
+    if (response.data.status === "success") {
+      updateUserData(updateUser);
+      navigate("/dashboard");
+    }
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
+    return {
+      status: "fail",
+      message: err.response.data.message,
+    };
   }
 };
 
@@ -63,14 +76,11 @@ const getAllUserForAdmin = async (token) => {
 
 const getUserDetail = async (token, userId) => {
   try {
-    const result = await Axios.get(
-      `${BASE_URL}/users/${ userId }`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const result = await Axios.get(`${BASE_URL}/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const users = await result.data;
     return users;

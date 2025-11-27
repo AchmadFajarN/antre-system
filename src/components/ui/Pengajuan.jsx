@@ -12,6 +12,7 @@ const Pengajuan = ({
   message,
   setMessage,
   placeholder,
+  setFile
 }) => {
   const [showPreview, setShowPreview] = useState(false);
 
@@ -55,7 +56,7 @@ const Pengajuan = ({
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          {!isDisplay && <input type="file" className="input-pengajuan" />}
+          {!isDisplay && <input type="file" name="file" onChange={(e) => setFile(e.target.files[0])} className="input-pengajuan" />}
           <button className="text-sm bg-yellow-500 text-slate-900 border-transparent hover:bg-transparent hover:border-slate-900 transition-colors duration-animation border-2 font-[500] px-4 cursor-pointer py-1 rounded-md">
             Submit
           </button>

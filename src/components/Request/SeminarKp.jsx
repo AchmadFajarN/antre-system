@@ -23,9 +23,10 @@ const ChildrenSempro = () => {
 const SeminarKp = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Seminar Kp", message, navigate);
+    await requestPengajuan("Seminar Kp", message, file, navigate);
   };
   const { syarat, title, url, fileName } = seminarKerjaPraktik;
   return (
@@ -37,7 +38,7 @@ const SeminarKp = () => {
       url={url}
       fileName={fileName}
       title={title}
-      isDisplay={false}
+      setFile={setFile}
       children={<ChildrenSempro />}
     />
   );

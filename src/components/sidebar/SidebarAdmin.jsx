@@ -1,6 +1,5 @@
 import { LayoutDashboard, User, Send, LogOut, Menu } from "lucide-react";
 import { useState } from "react";
-import { logout } from "../../utils/api/auth";
 import { useNavigate } from "react-router";
 import { Link, useLocation } from "react-router"
 
@@ -10,14 +9,9 @@ const SidebarAdmin = () => {
   const logoutHandler = async () => {
     const token = localStorage.getItem("tokenKey");
     if (token) {
-      const response = await logout(token);
       navigate("/");
       localStorage.removeItem("tokenKey");
       localStorage.removeItem("user");
-
-      if (response.status === "error") {
-        console.log(response);
-      }
     }
   };
   const [showNav, setShowNav] = useState(false);

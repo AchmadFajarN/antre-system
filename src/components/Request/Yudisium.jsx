@@ -7,9 +7,10 @@ import { requestPengajuan } from "../../utils/action";
 const Yudisium = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("yudisium", message, navigate);
+    await requestPengajuan("yudisium", message, file, navigate);
   };
   const { title, syarat, url, fileName } = yudisium;
   return (
@@ -21,6 +22,7 @@ const Yudisium = () => {
       syarat={syarat}
       url={url}
       fileName={fileName}
+      setFile={setFile}
     />
   );
 };

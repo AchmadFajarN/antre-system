@@ -23,9 +23,10 @@ const ChildrenSempro = () => {
 const Skripsi = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Sidang skripsi", message, navigate);
+    await requestPengajuan("Sidang skripsi", message, file, navigate);
   };
   const { syarat, title, url, fileName } = sidangSkripsi;
   return (
@@ -37,7 +38,7 @@ const Skripsi = () => {
       url={url}
       fileName={fileName}
       title={title}
-      isDisplay={false}
+      setFile={setFile}
       children={<ChildrenSempro />}
     />
   );

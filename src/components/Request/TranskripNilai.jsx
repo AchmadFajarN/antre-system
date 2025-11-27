@@ -9,7 +9,7 @@ const TranskripNilai = () => {
   const [message, setMessage] = useState("");
   const submitHandler = async (e) => {
     e.preventDefault();
-    await requestPengajuan("Transkrip nilai", message, navigate);
+    await requestPengajuan("Transkrip nilai", message, null, navigate);
   };
   const { syarat, title } = transkripNilai;
   return (
